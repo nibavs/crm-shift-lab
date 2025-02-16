@@ -10,11 +10,8 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    public List<Transaction> findAllBySeller(Long seller);
-//    @Query("SELECT t FROM Transaction t WHERE t.seller = :sellerId")
-//    List<Transaction> findAllBySellerId(@Param("sellerId") Long sellerId);
+    List<Transaction> findAllBySeller(Long seller);
 
-//    @Query("SELECT t.seller, SUM(t.amount) FROM Transaction t WHERE t.transactionDate BETWEEN :startDate AND :endDate GROUP BY t.seller ORDER BY SUM(t.amount) DESC LIMIT 1")
     @Query("""
             SELECT s
             FROM Seller s

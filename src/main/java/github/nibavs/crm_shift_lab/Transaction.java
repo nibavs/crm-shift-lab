@@ -1,8 +1,5 @@
 package github.nibavs.crm_shift_lab;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeId;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
