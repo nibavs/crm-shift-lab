@@ -1,5 +1,7 @@
-package github.nibavs.crm_shift_lab;
+package github.nibavs.crm_shift_lab.repository;
 
+import github.nibavs.crm_shift_lab.entity.Seller;
+import github.nibavs.crm_shift_lab.entity.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

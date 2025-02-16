@@ -1,5 +1,9 @@
-package github.nibavs.crm_shift_lab;
+package github.nibavs.crm_shift_lab.controller;
 
+import github.nibavs.crm_shift_lab.entity.Seller;
+import github.nibavs.crm_shift_lab.repository.SellerRepository;
+import github.nibavs.crm_shift_lab.entity.Transaction;
+import github.nibavs.crm_shift_lab.repository.TransactionRepository;
 import github.nibavs.crm_shift_lab.exception.SellerNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,13 +25,13 @@ public class SellerController {
 
     @Operation(summary = "Список всех продавцов")
     @GetMapping
-    public List<Seller> sellers() {
+    public List<Seller> getAllSellers() {
         return sellerRepository.findAll();
     }
 
     @Operation(summary = "Информация о конкретном продавце")
     @GetMapping("/{id}")
-    public ResponseEntity<Seller> sellerById(@PathVariable Long id) {
+    public ResponseEntity<Seller> getSellerById(@PathVariable Long id) {
         return sellerRepository
                 .findById(id)
                 .map(seller -> ResponseEntity.ok().body(seller))
@@ -67,7 +71,7 @@ public class SellerController {
 
     @Operation(summary = "Получить все транзакции продавца")
     @GetMapping("/{sellerId}/transactions")
-    public List<Transaction> sellerTransactions(@PathVariable Long sellerId) {
+    public List<Transaction> getSellerTransactions(@PathVariable Long sellerId) {
         return transactionRepository.findAllBySeller(sellerId);
     }
 }

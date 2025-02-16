@@ -1,9 +1,11 @@
-package github.nibavs.crm_shift_lab;
+package github.nibavs.crm_shift_lab.controller;
 
+import github.nibavs.crm_shift_lab.entity.Transaction;
+import github.nibavs.crm_shift_lab.repository.TransactionRepository;
+import github.nibavs.crm_shift_lab.exception.TransactionNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,19 +25,15 @@ public class TransactionController {
 
     @Operation(summary = "Получить информацию о конкретной транзакции по ID")
     @GetMapping("/{id}")
-    public ResponseEntity<Transaction> getTransactionById(@PathVariable Long id) {
-        return transactionRepository
-                .findById(id)
-                .map(transaction -> ResponseEntity.ok().body(transaction))
-                .orElse(ResponseEntity.notFound().build());
+    public Transaction getTransactionById(@PathVariable Long id) {
+        return transactionRepository.findById(id)
+                .orElseThrow(() -> new TransactionNotFoundException(id));
     }
 
     @Operation(summary = "Создать новую транзакцию")
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
-        transaction = transactionRepository.save(transaction);
-        return ResponseEntity.ok(transaction);
+    public Transaction createTransaction(@RequestBody Transaction transaction) {
+        return transactionRepository.save(transaction);
     }
-
 
 }

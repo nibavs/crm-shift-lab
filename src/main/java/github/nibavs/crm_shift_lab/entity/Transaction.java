@@ -1,5 +1,6 @@
-package github.nibavs.crm_shift_lab;
+package github.nibavs.crm_shift_lab.entity;
 
+import github.nibavs.crm_shift_lab.PaymentType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
@@ -34,6 +35,10 @@ public class Transaction {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getSeller() {

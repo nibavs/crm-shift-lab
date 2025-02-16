@@ -1,4 +1,4 @@
-package github.nibavs.crm_shift_lab;
+package github.nibavs.crm_shift_lab.entity;
 
 import jakarta.persistence.*;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -32,6 +32,12 @@ public class Seller {
     }
 
     public Seller() {}
+
+    public Seller(Long id, String name, String contactInfo) {
+        this.id = id;
+        this.name = name;
+        this.contactInfo = contactInfo;
+    }
 
     public Long getId() {
         return id;
